@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de convidados</title>
+</head>
+<body>
+
+    <h1>Lista de convidados casamento Antônio Manduca</h1>
+    <input type="text" id="nome" placeholder="Insira o nome do convidado">
+    <button onclick="adicionar()">Adicionar</button>
+    <br><br>
+    <button onclick="mostar()">Mostar convidados</button>
+    
+    <script>
+        let convidados = [];
+        function adicionar(){
+            let nome = document.getElementById("nome").value;
+            if (nome != ''){
+                console.log("Adicionado com sucesso!");
+                convidados.push(nome);
+                console.log(convidados);
+            }
+            else{console.log("Não pode adicionar vazio!")}
+            
+        }
+
+        function mostar(){
+            console.log(convidados);
+            for (let i = 0; i < convidados.length; i++){
+                const newUl = document.createElement("ul")
+                newUl.appendChild(convidados[i])
+
+            }
+        }
+    </script>
+</body>
+</html>
