@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de convidados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lista de convidados casamento Antônio Manduca</h1>
+    
+    <div class="manipulacao">
+        <div class="block">
+            <h2>Adicionar Convidado</h2>
+            <input type="text" id="nome" placeholder="Insira o nome do convidado">
+            <button class="adicionar" onclick="adicionar()">Adicionar</button>
+        </div>
+        <div class="block">
+            <h2>Remover Convidado</h2>
+            <input type="text" id="excluir" placeholder="Insira o nome do convidado a ser removido">
+            <button class="remover" onclick="remover()">Remover</button>
+        </div>
+    </div>
+    <div class="lista">
+        <h2>Lista de Convidados</h2>
+        <button class="listar" onclick="mostrar()">Mostrar convidados</button>
+        <ul id="lista"></ul>
+    </div>
+
+
+    
+
+    
+
+    
+    <script>
+        let convidados = [];
+        function adicionar(){
+
+            let nome = document.getElementById("nome").value;
+            let verificar = self.verificar(nome,convidados);
+            if (nome != '' && verificar==-1){
+                console.log("Adicionado com sucesso!");
+                convidados.push(nome);
+                console.log(convidados);
+            }
+            else{console.log("Não pode adicionar vazio! Ou nome já inserido");}
+            
+        }
+-
+        function mostrar(){
+            console.log(convidados);
+            const ul = document.getElementById('lista');
+            ul.innerHTML = '';
+            
+            
+
+            for (let i = 0; i < convidados.length; i++){
+                const li = document.createElement("p");
+                li.textContent = convidados[i]
+                ul.appendChild(li);
+            }
+        }
+
+        function remover(){
+            let nome = document.getElementById("excluir").value;
+            let verificar = self.verificar(nome, convidados);
+            if(nome != '' && verificar !=-1){
+                convidados.pop(verificar);
+                console.log("Convidado removido com sucesso!")
+            }
+        }
+
+        function verificar(nome,convidados){
+
+            for (let i =0; i < convidados.length; i++){
+                if(convidados[i] == nome){
+                    return i;
+                }
+            }
+            return -1;
+        }
+    </script>
+</body>
+</html>
